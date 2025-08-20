@@ -30,10 +30,8 @@ public class Ponderacion {
     public Integer calcularPonderacion() {
         int sumaNotasPonderadas = 0;
         for(int i = 0; i < this.ponderaciones.size(); i++) {
-            int calculo = (this.ponderaciones.get(i) / 100) * this.notas.get(i);
+            int calculo = (this.ponderaciones.get(i) * this.notas.get(i)) / 100;
             sumaNotasPonderadas += calculo;
-
-            //sumaNotasPonderadas += (this.ponderaciones.get(i) * this.notas.get(i)) / 100;
         }
         return sumaNotasPonderadas;
     }
