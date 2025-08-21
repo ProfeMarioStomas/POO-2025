@@ -1,11 +1,13 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import calculos.ContadorParesImpares;
 import calculos.Ponderacion;
 import calculos.Promedio;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.print("Ingrese 1 para calcular promedio o 2 para calcular ponderaciones: ");
+        System.out.print("Ingrese 1 para calcular promedio, 2 para calcular ponderaciones, 3 para contar pares e impares: ");
 
         Scanner sc = new Scanner(System.in);
         try {
@@ -34,7 +36,8 @@ public class App {
                         p1.agregarNota(nota);
                     }
                 }
-            } else if(opcion == 2) {
+            }
+            else if(opcion == 2) {
                 Ponderacion p2 = new Ponderacion();
 
                 while(p2.obtenerSumaPonderacion() < 100) {
@@ -57,7 +60,25 @@ public class App {
 
                 System.out.println("La nota final es de: " + p2.calcularPonderacion());
 
-            } else {
+            }
+            else if (opcion == 3) {
+                ContadorParesImpares cpi = new ContadorParesImpares();
+
+                int numero = 0;
+                while (numero != -1) {
+                    System.out.print("Ingrese un nº (-1 para terminar)" +
+                            ": ");
+                    numero = sc.nextInt();
+                    cpi.agregarNumero(numero);
+                }
+                ArrayList<Integer> procesados = cpi.procesarDatos();
+                int pares = procesados.get(0);
+                int impares = procesados.get(1);
+
+                System.out.println("La cantidad de nº pares fue de: " + pares + ".");
+                System.out.println("La cantidad de nº impares fue de: " + impares + ".");
+            }
+            else {
                 System.out.println("Opción no válida. La aplicación se cerrará");
             }
         } catch (Exception ex) {
