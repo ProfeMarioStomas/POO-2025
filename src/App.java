@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
+import calculos.ParesImpares;
 import calculos.Ponderacion;
 import calculos.Promedio;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.print("Ingrese 1 para calcular promedio o 2 para calcular ponderaciones: ");
+        System.out.print("Ingrese 1 para calcular promedio, 2 para calcular ponderaciones, 3 para contar pares e impares: ");
 
         Scanner sc = new Scanner(System.in);
         try {
@@ -57,6 +58,20 @@ public class App {
 
                 System.out.println("La nota final es de: " + p2.calcularPonderacion());
 
+            } else if (opcion == 3) {
+                ParesImpares p3 = new ParesImpares();
+                while(true) {
+                    System.out.print("Ingrese nº: ");
+                    int numero = sc.nextInt();
+                    if (numero == -1) {
+                        break;
+                    } else {
+                        p3.agregarNumero(numero);
+                    }
+                }
+
+                System.out.println("La cantidad de nºs pares es: " + p3.cantidadPares());
+                System.out.println("La cantidad de nºs impares es: " + p3.cantidadImPares());
             } else {
                 System.out.println("Opción no válida. La aplicación se cerrará");
             }
